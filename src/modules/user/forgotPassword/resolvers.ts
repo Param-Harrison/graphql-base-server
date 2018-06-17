@@ -35,7 +35,7 @@ export const resolvers: ResolverMap = {
       }
 
       await forgotPasswordLockAccount(user.id, redis);
-      // @todo add frontend url
+      // @todo add frontend url as first argument
       await createForgotPasswordLink("", user.id, redis);
       // @todo send email with url
       return true;
@@ -74,9 +74,7 @@ export const resolvers: ResolverMap = {
       );
 
       const deleteKeyPromise = redis.del(redisKey);
-
       await Promise.all([updatePromise, deleteKeyPromise]);
-
       return null;
     }
   }

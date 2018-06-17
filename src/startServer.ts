@@ -12,8 +12,8 @@ import { confirmEmail } from "./routes/confirmEmail";
 import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from "./constants";
 import { createTestConn } from "./testUtils/createTestConn";
+import { AddressInfo } from "net";
 
-const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session as any);
 
 export const startServer = async () => {
@@ -49,7 +49,7 @@ export const startServer = async () => {
         prefix: redisSessionPrefix
       }),
       name: "qid",
-      secret: SESSION_SECRET,
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
@@ -77,9 +77,10 @@ export const startServer = async () => {
   }
   const app = await server.start({
     cors,
-    port: process.env.NODE_ENV === "test" ? 0 : 4000
+    port: process.env.NODE_ENV === "test" ? 0 : process.env.PORT
   });
-  console.log("Server is running on localhost:4000");
+  const { port } = app.address() as AddressInfo;
+  console.log(`Server is running on localhost:${port}`);
 
   return app;
 };
