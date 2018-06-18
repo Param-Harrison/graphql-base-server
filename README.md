@@ -9,3 +9,4 @@ Heavily opinionated Express, TypeORM, GraphQL API setup
 - [ ] ORM config can be made through JS / TS (for reusing variables from docker-compose)
 - [ ] Production build process
 - [ ] Circle CI integrations with github
+- [ ] Forget password doesn't send a email yet (front end URL not passed well in context)
