@@ -1,7 +1,7 @@
 [
   {
     "name": "development",
-    "type": "postgres",
+    "type": "postgresDB",
     "host": "database",
     "port": 5432,
     "username": "user",
@@ -20,7 +20,7 @@
   },
   {
     "name": "test",
-    "type": "postgres",
+    "type": "postgresDB",
     "host": "database",
     "port": 5432,
     "username": "user",

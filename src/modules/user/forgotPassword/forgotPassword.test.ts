@@ -1,5 +1,4 @@
 import { Connection } from "typeorm";
-import * as Redis from "ioredis";
 import * as faker from "faker";
 
 import { User } from "../../../entity/User";
@@ -10,9 +9,9 @@ import { passwordNotLongEnough } from "../register/errorMessages";
 import { expiredKeyError } from "./errorMessages";
 import { forgotPasswordLockedError } from "../login/errorMessages";
 import { createTestConn } from "../../../testUtils/createTestConn";
+import { redis } from "../../../redis";
 
 let conn: Connection;
-export const redis = new Redis();
 faker.seed(Date.now() + 0);
 const email = faker.internet.email();
 const password = faker.internet.password();
