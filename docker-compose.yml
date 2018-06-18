@@ -14,13 +14,13 @@ services:
     expose:
       - 4000
     depends_on:
-      - postgresDB
+      - database
       - redisStore
     links:
-      - postgresDB
+      - database
       - redisStore
     command: "npm start"
-  postgresDB:
+  database:
     image: postgres
     ports:
      - 5432:5432
