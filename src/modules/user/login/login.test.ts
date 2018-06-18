@@ -44,15 +44,10 @@ describe("login", () => {
 
   test("email not confirmed", async () => {
     await client.register(email, password);
-
     await loginExpectError(email, password, confirmEmailError);
-
     await User.update({ email }, { confirmed: true });
-
     await loginExpectError(email, faker.internet.password(), invalidLogin);
-
     const response = await client.login(email, password);
-
     expect(response.data).toEqual({ login: null });
   });
 });

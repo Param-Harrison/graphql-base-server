@@ -1,0 +1,38 @@
+version: "3"
+services:
+  node:
+    image: "node:8"
+    working_dir: /home/mockbase-graphql
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/home/mockbase-graphql
+    environment:
+      PORT: 4000
+    ports:
+      - 4000:4000
+    expose:
+      - 4000
+    depends_on:
+      - database
+      - redisStore
+    links:
+      - database
+      - redisStore
+    command: "npm start"
+  database:
+    image: postgres
+    ports:
+     - 5432:5432
+    expose:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: mockbase-graphql
+  redisStore:  
+    image: redis
+    ports:
+      - 6379:6379
+    expose:
+      - 6379

@@ -1,0 +1,1 @@
+docker exec -it $(docker ps -a | grep mockbase_node | awk '{ print $1 }') /bin/sh -c 'npm run test'

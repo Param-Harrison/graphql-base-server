@@ -1,4 +1,3 @@
-import * as Redis from "ioredis";
 import fetch from "node-fetch";
 import { Connection } from "typeorm";
 import * as faker from "faker";
@@ -6,9 +5,9 @@ import * as faker from "faker";
 import { createConfirmEmailLink } from "./createConfirmEmailLink";
 import { User } from "../../../entity/User";
 import { createTestConn } from "../../../testUtils/createTestConn";
+import { redis } from "../../../redis";
 
 let userId = "";
-const redis = new Redis();
 faker.seed(Date.now() + 4);
 
 let conn: Connection;
