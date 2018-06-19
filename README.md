@@ -2,7 +2,7 @@
 
 Heavily opinionated Express, TypeORM, GraphQL API setup
 
-## TODO
+## TODO Improvements
 
 - [ ] Separate test config for DB and Redis
 - [ ] File locations reference should follow proper pattern
